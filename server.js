@@ -1,29 +1,41 @@
+
 const express = require('express');
 const axios = require('axios');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Route: /me
 app.get('/me', async (req, res) => {
   try {
+    // Fetch dynamic cat fact
     const response = await axios.get('https://catfact.ninja/fact');
+
+    // Set correct Content-Type header
+    res.setHeader('Content-Type', 'application/json');
+
+    // Send properly structured JSON response
     res.json({
       status: 'success',
       user: {
-        email: 'adegokeyusrah06@gmail.com',
         name: 'Adegoke Yusrah',
-        stack: 'Node.js/Express',
+        email: 'adegokeyusrah06@gmail.com',
       },
-      timestamp: new Date().toISOString(),
-      fact: response.data.fact,
+      fact: response.data.fact, // dynamic fact
+      timestamp: new Date().toISOString(), // valid ISO timestamp
     });
   } catch (error) {
+    console.error('Error fetching cat fact:', error.message);
+
+    // Return clean error response
     res.status(500).json({
       status: 'error',
-      message: 'Could not fetch cat fact',
+      message: 'Internal Server Error',
     });
   }
 });
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-
+// Start server
+app.listen(PORT, () => {
+  console.log(`✅ Server running on http://localhost:${PORT}/me`);
+});
