@@ -11,7 +11,8 @@ This simple API fetches a random cat fact from [catfact.ninja](https://catfact.n
   "status": "success",
   "user": {
     "name": "Adegoke Yusrah",
-    "email": "adegokeyusrah06@gmail.com"
+    "email": "adegokeyusrah06@gmail.com",
+    "stack": "Backend Developer"
   },
   "fact": "Cats have five toes on their front paws, but only four on the back ones.",
   "timestamp": "2025-10-17T14:30:00.000Z"
