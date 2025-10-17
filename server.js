@@ -20,6 +20,7 @@ app.get('/me', async (req, res) => {
       user: {
         name: 'Adegoke Yusrah',
         email: 'adegokeyusrah06@gmail.com',
+        stack: "Backend Developer"
       },
       fact: response.data.fact, // dynamic fact
       timestamp: new Date().toISOString(), // valid ISO timestamp
